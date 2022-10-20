@@ -15,6 +15,12 @@ const App = () => {
     { id: 2, text: 'everyone' }
   ])
 
+  const handleTodo = (key) => {
+    setTodos((prevtods) => {
+      return prevtods.filter((todo) => todo.id != key)
+    })
+  }
+
   return (
     <View style={style.container}>
       <Header />
@@ -25,10 +31,9 @@ const App = () => {
           <FlatList
             data={todos}
             renderItem={({ item }) => (
-              <TodoList todo={item} />
+              <TodoList todo={item} handleTodo={handleTodo} />
             )}
           />
-
         </View>
       </View>
 

@@ -3,9 +3,9 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 
 
-function TodoList({ todo }) {
+function TodoList({ todo, handleTodo }) {
     return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => { handleTodo(todo.id) }}>
             <Text style={style.item}>{todo.text}</Text>
         </TouchableOpacity>
     )
