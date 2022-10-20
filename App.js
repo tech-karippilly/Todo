@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
+import Header from './components/Header/header';
 
 
 
@@ -15,7 +16,7 @@ const App = () => {
 
   return (
     <View style={style.container}>
-      {/* HEADER */}
+      <Header />
       <View style={style.contend}>
         {/* FORM */}
         <View style={style.list}>
@@ -38,7 +39,6 @@ const App = () => {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 30
   },
   contend: {
     padding: 40,
