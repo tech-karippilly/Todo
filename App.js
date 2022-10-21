@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import Header from './components/Header/header';
+import TodoForm from './components/TodoForm/todoForm';
 
 
 
@@ -18,7 +19,7 @@ const App = () => {
     <View style={style.container}>
       <Header />
       <View style={style.contend}>
-        {/* FORM */}
+        <TodoForm />
         <View style={style.list}>
           <FlatList
             data={todos}
