@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import Header from './components/Header/header';
+import TodoForm from './components/TodoForm/todoForm';
 
 
 
@@ -14,11 +15,18 @@ const App = () => {
     { id: 2, text: 'everyone' }
   ])
 
+  const handleTodo = (todo) => {
+    setTodos((prevtodo) => ({
+      ...prevtodo,
+      todo
+    }))
+  }
+
   return (
     <View style={style.container}>
       <Header />
       <View style={style.contend}>
-        {/* FORM */}
+        <TodoForm handleTodo={handleTodo} />
         <View style={style.list}>
           <FlatList
             data={todos}
