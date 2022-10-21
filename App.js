@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import Header from './components/Header/header';
 import TodoList from './components/Todolist/todo_List';
@@ -15,6 +15,16 @@ const App = () => {
     { id: 2, text: 'everyone' }
   ])
 
+  const [todoLen, setTodoLen] = useState(true)
+
+  useEffect(() => {
+    console.log('len', todos.length);
+
+
+    if (todos.length == 0) {
+      setTodoLen(false)
+    }
+  }, [todos])
   const handleTodo = (key) => {
     setTodos((prevtods) => {
       return prevtods.filter((todo) => todo.id != key)
@@ -27,7 +37,6 @@ const App = () => {
       <View style={style.contend}>
         {/* FORM */}
         <View style={style.list}>
-
           <FlatList
             data={todos}
             renderItem={({ item }) => (
