@@ -3,7 +3,7 @@ import { Button, Pressable, StyleSheet, Text, TextInput, View } from 'react-nati
 
 
 
-const TodoForm = ({ handleTodo }) => {
+const TodoForm = ({ handleAddTodo }) => {
 
     const [text, setText] = useState()
     const [err, setErr] = useState(false)
@@ -19,7 +19,7 @@ const TodoForm = ({ handleTodo }) => {
         if (text.length === 0) {
             setErr(true)
         } else {
-            handleTodo({ id: Math.random(), text })
+            handleAddTodo({ id: Math.random(), text })
             setText('')
         }
 

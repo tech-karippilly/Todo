@@ -15,7 +15,7 @@ const App = () => {
     { id: 2, text: 'everyone' }
   ])
 
-  const handleTodo = (todo) => {
+  const handleAddTodo = (todo) => {
     setTodos((prevtodo) => ({
       ...prevtodo,
       todo
@@ -26,7 +26,7 @@ const App = () => {
     <View style={style.container}>
       <Header />
       <View style={style.contend}>
-        <TodoForm handleTodo={handleTodo} />
+        <TodoForm handleTodo={handleAddTodo} />
         <View style={style.list}>
           <FlatList
             data={todos}
