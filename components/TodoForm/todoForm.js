@@ -3,14 +3,14 @@ import { Button, Pressable, StyleSheet, Text, TextInput, View } from 'react-nati
 
 
 
-const TodoForm = () => {
+const TodoForm = ({ handleTodo }) => {
 
     const [text, setText] = useState()
     const [err, setErr] = useState(false)
 
     const changeHandler = (val) => {
         setText(val)
-        console.log('value:', val);
+
     }
 
     const handleText = () => {
@@ -19,6 +19,7 @@ const TodoForm = () => {
         if (text.length === 0) {
             setErr(true)
         } else {
+            handleTodo({ id: Math.random(), text })
             setText('')
         }
 
