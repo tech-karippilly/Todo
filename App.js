@@ -20,15 +20,13 @@ const App = () => {
 
 
 
-  useEffect(() => {
-    if (todos.length == 0) {
-      setTodoLen(false)
-    }
-  }, [todos])
+
+
   const handleTodo = (key) => {
     setTodos((prevtods) => {
       return prevtods.filter((todo) => todo.id != key)
-
+    })
+  }
 
   const addTodo = (todo) => {
     setTodos((prevTodos) => {
@@ -36,11 +34,8 @@ const App = () => {
         ...prevTodos,
         { id: Math.random(), text: todo }
       ]
-
     })
-
   }
-
 
   return (
     <View style={style.container}>
@@ -54,7 +49,7 @@ const App = () => {
           <FlatList
             data={todos}
             renderItem={({ item }) => (
-              <Text>{item.text}</Text>
+              <TodoList todo={item} handleTodo={handleTodo} />
             )}
           />
         </View>
