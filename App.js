@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import Header from './components/Header/header';
 import TodoForm from './components/TodoForm/todoForm';
@@ -14,18 +15,24 @@ const App = () => {
     { id: 2, text: 'everyone' }
   ])
 
-  const handleAddTodo = (todo) => {
-    setTodos((prevtodo) => ({
-      ...prevtodo,
-      todo
-    }))
+
+
+  const addTodo = (todo) => {
+    setTodos((prevTodos) => {
+      return [
+        ...prevTodos,
+        { id: Math.random(), text: todo }
+      ]
+    })
+
   }
+
 
   return (
     <View style={style.container}>
       <Header />
       <View style={style.contend}>
-        <TodoForm handleTodo={handleAddTodo} />
+        <TodoForm addTodo={addTodo} />
         <View style={style.list}>
           <FlatList
             data={todos}
