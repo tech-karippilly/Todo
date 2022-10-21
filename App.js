@@ -2,7 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import Header from './components/Header/header';
+
 import TodoList from './components/Todolist/todo_List'
+
+import TodoForm from './components/TodoForm/todoForm';
+
 
 
 
@@ -14,7 +18,7 @@ const App = () => {
     { id: 2, text: 'everyone' }
   ])
 
-  const [todoLen, setTodoLen] = useState(true)
+
 
   useEffect(() => {
     if (todos.length == 0) {
@@ -24,18 +28,33 @@ const App = () => {
   const handleTodo = (key) => {
     setTodos((prevtods) => {
       return prevtods.filter((todo) => todo.id != key)
+
+
+  const addTodo = (todo) => {
+    setTodos((prevTodos) => {
+      return [
+        ...prevTodos,
+        { id: Math.random(), text: todo }
+      ]
+
     })
+
   }
+
 
   return (
     <View style={style.container}>
       <Header />
       <View style={style.contend}>
+
+
+        <TodoForm addTodo={addTodo} />
+
         <View style={style.list}>
           <FlatList
             data={todos}
             renderItem={({ item }) => (
-              <TodoList todo={item} handleTodo={handleTodo} />
+              <Text>{item.text}</Text>
             )}
           />
         </View>
