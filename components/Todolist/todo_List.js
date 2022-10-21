@@ -8,7 +8,6 @@ function TodoList({ todo, handleTodo }) {
 
     return (
         <TouchableOpacity onPress={() => { handleTodo(todo.id) }}>
-
             <Text style={style.item}>{todo.text}</Text>
         </TouchableOpacity>
     )
