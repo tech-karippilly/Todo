@@ -1,6 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
-import { FlatList, Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
+
+import { Alert,FlatList, Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
+
 import Header from './components/Header/header';
 
 import TodoList from './components/Todolist/todo_List'
@@ -23,12 +25,19 @@ const App = () => {
 
 
   const handleTodo = (key) => {
+    Alert.alert('SUCESS', 'Todo Deleted ', [
+      { text: 'ok' }
+    ])
     setTodos((prevtods) => {
       return prevtods.filter((todo) => todo.id != key)
     })
+
   }
 
   const addTodo = (todo) => {
+    Alert.alert('SUCESS', 'Todo added sucessfully', [
+      { text: 'ok' }
+    ])
     setTodos((prevTodos) => {
       return [
         ...prevTodos,
@@ -38,6 +47,7 @@ const App = () => {
   }
 
   return (
+
     <TouchableWithoutFeedback onPress={() => {
       Keyboard.dismiss()
     }}>
@@ -56,6 +66,7 @@ const App = () => {
         </View>
       </View>
     </TouchableWithoutFeedback>
+
   )
 
 }
@@ -65,6 +76,7 @@ const App = () => {
 const style = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff'
   },
   contend: {
     padding: 40,
