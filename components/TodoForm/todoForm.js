@@ -3,29 +3,24 @@ import { Button, Pressable, StyleSheet, Text, TextInput, View } from 'react-nati
 
 
 
-const TodoForm = ({ handleAddTodo }) => {
+const TodoForm = ({ addTodo }) => {
 
     const [text, setText] = useState()
     const [err, setErr] = useState(false)
 
     const changeHandler = (val) => {
         setText(val)
-
     }
 
     const handleText = () => {
-
-        console.log("text", text.length);
         if (text.length === 0) {
             setErr(true)
         } else {
-            handleAddTodo({ id: Math.random(), text })
+            addTodo(text)
             setText('')
         }
-
     }
 
-    console.log('err', err);
     return (
         <View>
             <TextInput
@@ -52,6 +47,7 @@ const style = StyleSheet.create({
         borderBottomWidth: 1,
         borderColor: '#283747',
         padding: 6,
+        color: 'black'
 
     },
     inputErr: {
