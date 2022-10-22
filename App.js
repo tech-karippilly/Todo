@@ -80,9 +80,11 @@ const style = StyleSheet.create({
   },
   contend: {
     padding: 40,
+    flex: 1
   },
   list: {
-    marginTop: 40
+    marginTop: 40,
+    flex: 1
   }
 })
 
