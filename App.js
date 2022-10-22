@@ -14,30 +14,39 @@ const App = () => {
     { id: 2, text: 'everyone' }
   ])
 
-  const [todoLen, setTodoLen] = useState(true)
+  const [todoErr, setTodoErr] = useState(false)
 
   useEffect(() => {
-    if (todos.length == 0) {
-      setTodoLen(false)
+    if (todos.length === 0) {
+      setTodoErr(true)
     }
   }, [todos])
   const handleTodo = (key) => {
-    setTodos((prevtods) => {
-      return prevtods.filter((todo) => todo.id != key)
-    })
+    if (key === undefined) {
+      console.log('No keys',);
+    } else {
+      setTodos((prevtods) => {
+        return prevtods.filter((todo) => todo.id != key)
+      })
+    }
   }
 
+  console.log('todoErr', todoErr);
   return (
     <View style={style.container}>
       <Header />
       <View style={style.contend}>
         <View style={style.list}>
-          <FlatList
-            data={todos}
-            renderItem={({ item }) => (
-              <TodoList todo={item} handleTodo={handleTodo} />
-            )}
-          />
+          {todoErr ?
+            < TodoList todoErr={todoErr} todo={todos} handleTodo={handleTodo} /> :
+            <FlatList
+              data={todos}
+              renderItem={({ item }) => (
+                < TodoList todo={item} handleTodo={handleTodo} />
+              )}
+            />
+          }
+
         </View>
       </View>
 
