@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { Alert, FlatList, StyleSheet, Text, View } from 'react-native';
 import Header from './components/Header/header';
 
 import TodoList from './components/Todolist/todo_List'
@@ -23,12 +23,19 @@ const App = () => {
 
 
   const handleTodo = (key) => {
+    Alert.alert('SUCESS', 'Todo Deleted ', [
+      { text: 'ok' }
+    ])
     setTodos((prevtods) => {
       return prevtods.filter((todo) => todo.id != key)
     })
+
   }
 
   const addTodo = (todo) => {
+    Alert.alert('SUCESS', 'Todo added sucessfully', [
+      { text: 'ok' }
+    ])
     setTodos((prevTodos) => {
       return [
         ...prevTodos,
@@ -41,10 +48,7 @@ const App = () => {
     <View style={style.container}>
       <Header />
       <View style={style.contend}>
-
-
         <TodoForm addTodo={addTodo} />
-
         <View style={style.list}>
           <FlatList
             data={todos}
@@ -54,7 +58,6 @@ const App = () => {
           />
         </View>
       </View>
-
     </View>
   )
 
@@ -65,6 +68,7 @@ const App = () => {
 const style = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff'
   },
   contend: {
     padding: 40,
