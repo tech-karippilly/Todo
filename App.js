@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 
-import { Alert,FlatList, Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Alert, FlatList, Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
 
 import Header from './components/Header/header';
 
@@ -20,17 +20,27 @@ const App = () => {
     { id: 2, text: 'everyone' }
   ])
 
+  const [todoErr, setTodoErr] = useState(false)
 
-
+  useEffect(() => {
+    if (todos.length === 0) {
+      setTodoErr(true)
+    }
+  }, [todos])
 
 
   const handleTodo = (key) => {
     Alert.alert('SUCESS', 'Todo Deleted ', [
       { text: 'ok' }
     ])
-    setTodos((prevtods) => {
-      return prevtods.filter((todo) => todo.id != key)
-    })
+
+    if (key === undefined) {
+      console.log('No keys',);
+    } else {
+      setTodos((prevtods) => {
+        return prevtods.filter((todo) => todo.id != key)
+      })
+    }
 
   }
 
@@ -46,7 +56,9 @@ const App = () => {
     })
   }
 
+  console.log('todoErr', todoErr);
   return (
+
 
     <TouchableWithoutFeedback onPress={() => {
       Keyboard.dismiss()
@@ -56,12 +68,15 @@ const App = () => {
         <View style={style.contend}>
           <TodoForm addTodo={addTodo} />
           <View style={style.list}>
-            <FlatList
-              data={todos}
-              renderItem={({ item }) => (
-                <TodoList todo={item} handleTodo={handleTodo} />
-              )}
-            />
+            {todoErr ?
+              < TodoList todoErr={todoErr} todo={todos} handleTodo={handleTodo} /> :
+              <FlatList
+                data={todos}
+                renderItem={({ item }) => (
+                  < TodoList todo={item} handleTodo={handleTodo} />
+                )}
+              />
+            }
           </View>
         </View>
       </View>
