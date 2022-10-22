@@ -30,13 +30,14 @@ const App = () => {
 
 
   const handleTodo = (key) => {
-    Alert.alert('SUCESS', 'Todo Deleted ', [
-      { text: 'ok' }
-    ])
+
 
     if (key === undefined) {
       console.log('No keys',);
     } else {
+      Alert.alert('SUCESS', 'Todo Deleted ', [
+        { text: 'ok' }
+      ])
       setTodos((prevtods) => {
         return prevtods.filter((todo) => todo.id != key)
       })
