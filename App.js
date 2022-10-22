@@ -46,9 +46,11 @@ const App = () => {
   }
 
   const addTodo = (todo) => {
+    setTodoErr(false)
     Alert.alert('SUCESS', 'Todo added sucessfully', [
       { text: 'ok' }
     ])
+    console.log("todo", todo);
     setTodos((prevTodos) => {
       return [
         ...prevTodos,
@@ -59,8 +61,6 @@ const App = () => {
 
   console.log('todoErr', todoErr);
   return (
-
-
     <TouchableWithoutFeedback onPress={() => {
       Keyboard.dismiss()
     }}>
@@ -82,7 +82,6 @@ const App = () => {
         </View>
       </View>
     </TouchableWithoutFeedback>
-
   )
 
 }
