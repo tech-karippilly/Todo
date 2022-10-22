@@ -47,6 +47,7 @@ const style = StyleSheet.create({
         borderBottomWidth: 1,
         borderColor: '#283747',
         padding: 6,
+        color: 'black'
 
     },
     inputErr: {
