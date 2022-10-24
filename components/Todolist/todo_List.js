@@ -5,7 +5,6 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 function TodoList({ todo, handleTodo, todoErr }) {
 
-
     return (
         <TouchableOpacity onPress={() => { handleTodo(todo.id) }}>
             {todoErr ? <Text style={style.item_err}>{'No Todos !!'}</Text> : <Text style={style.item}>{todo.text}</Text>}
